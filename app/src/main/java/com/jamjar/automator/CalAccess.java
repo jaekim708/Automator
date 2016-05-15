@@ -75,7 +75,7 @@ public class CalAccess {
         }
     }
 
-    private static Event queryCal(Cursor cursor) {
+    private static Event createEvent(Cursor cursor) {
         Event event = new Event();
         if (cursor != null && cursor.moveToFirst()) {
 
@@ -109,7 +109,7 @@ public class CalAccess {
                                 Long.toString(queryStartTime) + "/" + queryEndTime),
                         new String[]{"title", "begin", "end"}, selection, selectionArgs, "begin");
 
-        return queryCal(cursor);
+        return createEvent(cursor);
     }
 
     private static Event queryNextEvent(Context context) {
@@ -126,7 +126,7 @@ public class CalAccess {
                                 Long.toString(queryStartTime) + "/" + queryEndTime),
                         new String[]{"title", "begin", "end"}, selection, selectionArgs, "begin");
 
-        return queryCal(cursor);
+        return createEvent(cursor);
     }
 
     public static void cancelAlarms(){
