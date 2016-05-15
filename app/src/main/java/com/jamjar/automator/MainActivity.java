@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity  {
-    private Button mToggle;
     private Boolean mOn = false;
     private static TextView mOnOff;
     static final int REQUEST_PERMISSION_READ_CALENDAR = 4;
@@ -21,8 +20,9 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button mToggle = (Button) findViewById(R.id.toggle);
+
         mOnOff = (TextView) findViewById(R.id.onOff);
-        mToggle = (Button) findViewById(R.id.toggle);
         mOnOff.setText(R.string.off);
         CalAccess.setup(getApplicationContext());
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity  {
                     CalAccess.cancelAlarms();
                 } else {
                     mOn = true;
-                    mOnOff.setText("Currently on" + " \nNo future events");
+                    mOnOff.setText(R.string.on + R.string.no_events);
                     getCalendarPermissions();
                     CalAccess.update(getApplicationContext());
                 }
@@ -46,14 +46,9 @@ public class MainActivity extends AppCompatActivity  {
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_CALENDAR)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-                    Manifest.permission.READ_CALENDAR)) {
-            } else {
-                // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions(MainActivity.this,
-                        new String[]{Manifest.permission.READ_CALENDAR},
-                        REQUEST_PERMISSION_READ_CALENDAR);
-            }
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.READ_CALENDAR},
+                    REQUEST_PERMISSION_READ_CALENDAR);
         }
     }
 
