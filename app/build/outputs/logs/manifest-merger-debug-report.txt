@@ -1,0 +1,109 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:2:1-35:12
+	xmlns:android
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:2:11-69
+	package
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:3:5-35
+		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
+		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
+		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
+		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.READ_CALENDAR
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:5:5-72
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:5:22-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:6:5-67
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:6:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:7:22-76
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:8:5-71
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:8:22-68
+uses-permission#android.permission.WRITE_CALENDAR
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:9:5-73
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:9:22-70
+uses-permission#com.android.alarm.permission.SET_ALARM
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:10:5-77
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:10:22-75
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:11:22-65
+application
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:13:5-33:19
+MERGED from [com.android.support:appcompat-v7:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-identity:8.4.0] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/AndroidManifest.xml:19:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [pub.devrel:easypermissions:0.1.5] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/pub.devrel/easypermissions/0.1.5/AndroidManifest.xml:12:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+	android:supportsRtl
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:17:9-35
+	android:label
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:16:9-41
+	android:allowBackup
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:14:9-35
+	android:icon
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:15:9-43
+	android:theme
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:18:9-40
+receiver#com.jamjar.automator.ModifyVolume
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:19:9-23:20
+	android:process
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:20:13-38
+	android:enabled
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:22:13-35
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:21:13-41
+activity#com.jamjar.automator.MainActivity
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:24:9-29:20
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:24:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:25:13-28:29
+action#android.intent.action.MAIN
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:26:17-69
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:26:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:27:17-77
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:27:27-74
+meta-data#com.google.android.gms.version
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:30:9-32:69
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:31:13-58
+	android:value
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:32:13-66
+uses-sdk
+INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-identity:8.4.0] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [pub.devrel:easypermissions:0.1.5] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/pub.devrel/easypermissions/0.1.5/AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:appcompat-v7:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+	android:targetSdkVersion
+		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
+		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
+		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
