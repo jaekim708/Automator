@@ -24,14 +24,14 @@ public class ModifyVolume extends BroadcastReceiver {
         AudioManager audioManager =
                 (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 
-        audioManager.setRingerMode(audioManager.RINGER_MODE_VIBRATE);
+        audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
     }
 
     public static void unmute(Context context) {
         AudioManager audioManager =
                 (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 
-        audioManager.setRingerMode(audioManager.RINGER_MODE_NORMAL);
+        audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
         CalAccess.update(context);
 
     }

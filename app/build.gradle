@@ -1,9 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
+    Properties props = new Properties()
+    props.load(new FileInputStream(file(project.property("Automator.properties"))))
+
+    signingConfigs {
+        config {
+            storeFile file(props['keystore'])
+            storePassword props['keystore.password']
+            keyAlias props['keyAlias']
+            keyPassword props['keyPassword']
+        }
+    }
+
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "com.jamjar.automator"
         minSdkVersion 15
@@ -16,9 +27,19 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
                     'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
+
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -31,5 +52,8 @@ dependencies {
     compile('com.google.apis:google-api-services-calendar:v3-rev125-1.20.0') {
         exclude group: 'org.apache.httpcomponents'
     }
-
+    // This library handles authentication and authorization
+    compile 'com.spotify.sdk:spotify-auth:1.0.0-beta12@aar'
+    // This library handles music playback
+    compile 'com.spotify.sdk:spotify-player:1.0.0-beta12@aar'
 }

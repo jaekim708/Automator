@@ -51,6 +51,8 @@ MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProje
 MERGED from [pub.devrel:easypermissions:0.1.5] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/pub.devrel/easypermissions/0.1.5/AndroidManifest.xml:12:5-20
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.spotify.sdk:spotify-auth:1.0.0-beta12] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.spotify.sdk/spotify-auth/1.0.0-beta12/AndroidManifest.xml:30:5-20
+MERGED from [com.spotify.sdk:spotify-player:1.0.0-beta12] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.spotify.sdk/spotify-player/1.0.0-beta12/AndroidManifest.xml:30:5-20
 	android:supportsRtl
 		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:17:9-35
 	android:label
@@ -101,6 +103,8 @@ MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProje
 MERGED from [pub.devrel:easypermissions:0.1.5] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/pub.devrel/easypermissions/0.1.5/AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.spotify.sdk:spotify-auth:1.0.0-beta12] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.spotify.sdk/spotify-auth/1.0.0-beta12/AndroidManifest.xml:26:5-28:41
+MERGED from [com.spotify.sdk:spotify-player:1.0.0-beta12] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.spotify.sdk/spotify-player/1.0.0-beta12/AndroidManifest.xml:26:5-28:41
 	android:targetSdkVersion
 		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml
 		INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml

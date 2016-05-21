@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity  {
                     CalAccess.cancelAlarms();
                 } else {
                     mOn = true;
-                    mOnOff.setText(R.string.on + R.string.no_events);
+                    mOnOff.setText(R.string.on_no_events);
                     getCalendarPermissions();
                     CalAccess.update(getApplicationContext());
                 }

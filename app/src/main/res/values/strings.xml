@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Automator</string>
     <string name="button">Toggle</string>
-    <string name="on">Currently On</string>
+    <string name="on_no_events">Currently On\n
+    No future events</string>
     <string name="off">Currently Off</string>
 
     <string name="currEvent">Currently On\n
@@ -10,6 +11,5 @@
     <string name="nextEvent">Currently On\n
     Next event is: %1$s\nStarting at %2$s ending at: %3$s</string>
 
-    <string name="no_events">\nNo future events</string>
 
 </resources>
