@@ -1,15 +1,23 @@
 package com.jamjar.automator;
+import android.content.Context;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.spotify.sdk.android.player.Spotify;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -44,16 +52,26 @@ public class SpotifyPlayer {
             AutomatorApplication.getRequestQueue().add(jsObjRequest);
         }
     }
-/*
-    public static ArrayList<String> getPlaylists(){
+
+    public static void getPlaylists(){
         // Assumes userID has been acquired
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, userIDURL, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        userID = response.optString("id");
-                        System.out.println("USERID IS " + userID);
+                        Spinner spinner = MainActivity.getPlaylistSpinner();
+                        JSONArray respArr = response.optJSONArray("items");
+
+                        for (int i = 0; i < respArr.length(); i++) {
+                            try {
+                                String plName = respArr.getJSONObject(i).optString("name");
+                                MainActivity.getPlaylistAdapter().add(plName);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                     }
                 }, new Response.ErrorListener() {
 
@@ -61,10 +79,18 @@ public class SpotifyPlayer {
                     public void onErrorResponse(VolleyError error) {
                         Log.d("SpotifyPlayer", "JSON request for userID failed");
                     }
+                }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params =  super.getHeaders();
+                if (params == null)
+                    params = new HashMap<>();
+                params.put("Authorization", MainActivity.getSpotifyAuthTok());
+                return params;
+            }
+        };
 
-                });
-
-    return null;
+        AutomatorApplication.getRequestQueue().add(jsObjRequest);
     }
-    */
+
 }

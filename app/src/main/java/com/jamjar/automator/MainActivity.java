@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -30,15 +32,19 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
 
     private static Boolean mOn = false;
     private static TextView mOnOff;
-    private static int REQUEST_PERMISSION_READ_CALENDAR = 4;
+
     private static final String CLIENT_ID = "d301ecd6a9054daabab3b7d846540edc";
     private static final String REDIRECT_URI = "automator://callback/";
     private static Player mPlayer;
     private static final int SPOTIFY_REQUEST_CODE = 1337;
-
     private static String mSpotifyAuthTok;
+    private static ArrayAdapter<CharSequence> mPlaylistAdapter;
+    private static Spinner mPlaylistSpinner;
 
     private SpotifyPlayer spotifyPlayer = new SpotifyPlayer();
+
+
+    private static int REQUEST_PERMISSION_READ_CALENDAR = 4;
 
 
     @Override
@@ -47,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
         setContentView(R.layout.activity_main);
         Button mSToggle = (Button) findViewById(R.id.toggleSilencer);
         Button mPToggle = (Button) findViewById(R.id.togglePlayer);
+
+        mPlaylistSpinner = (Spinner) findViewById(R.id.playlistSpinner);
+        mPlaylistAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
+        mPlaylistAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mPlaylistSpinner.setAdapter(mPlaylistAdapter);
 
         mOnOff = (TextView) findViewById(R.id.onOff);
         mOnOff.setText(R.string.off);
@@ -183,4 +194,10 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
         return mSpotifyAuthTok;
     }
 
+    public static Spinner getPlaylistSpinner(){
+        return mPlaylistSpinner;
+    }
+    public static ArrayAdapter<CharSequence> getPlaylistAdapter(){
+        return mPlaylistAdapter;
+    }
 }
