@@ -573,7 +573,7 @@ int id normal 0x7f0c000a
 int id onOff 0x7f0c0058
 int id output 0x7f0c005c
 int id parentPanel 0x7f0c0035
-int id playlist_spinner 0x7f0c005b
+int id playlistSpinner 0x7f0c005b
 int id progress_circular 0x7f0c0005
 int id progress_horizontal 0x7f0c0006
 int id radio 0x7f0c0043

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:2:1-40:12
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:2:1-41:12
 	xmlns:android
 		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:2:11-69
 	package
@@ -42,7 +42,7 @@ ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifes
 	android:name
 		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:11:22-65
 application
-ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:12:5-38:19
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:12:5-39:19
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-identity:8.4.0] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/AndroidManifest.xml:19:5-20
@@ -55,50 +55,52 @@ MERGED from [com.spotify.sdk:spotify-auth:1.0.0-beta12] /home/jae/AndroidStudioP
 MERGED from [com.spotify.sdk:spotify-player:1.0.0-beta12] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.spotify.sdk/spotify-player/1.0.0-beta12/AndroidManifest.xml:30:5-20
 MERGED from [com.mcxiaoke.volley:library-aar:1.0.0] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.mcxiaoke.volley/library-aar/1.0.0/AndroidManifest.xml:5:5-19
 	android:supportsRtl
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:16:9-35
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:17:9-35
 	android:label
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:15:9-41
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:16:9-41
 	android:allowBackup
 		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:13:9-35
 	android:icon
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:14:9-43
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:15:9-43
 	android:theme
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:17:9-40
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:18:9-40
+	android:name
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:14:9-45
 receiver#com.jamjar.automator.ModifyVolume
-ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:18:9-22:20
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:19:9-23:20
 	android:process
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:19:13-38
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:20:13-38
 	android:enabled
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:21:13-35
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:22:13-35
 	android:name
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:20:13-41
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:21:13-41
 activity#com.jamjar.automator.MainActivity
-ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:23:9-28:20
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:24:9-29:20
 	android:name
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:23:19-47
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:24:19-47
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:24:13-27:29
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:25:13-28:29
 action#android.intent.action.MAIN
-ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:25:17-69
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:25:25-66
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:26:17-77
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:27:17-77
 	android:name
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:26:27-74
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:27:27-74
 activity#com.spotify.sdk.android.authentication.LoginActivity
-ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:31:9-33:74
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:32:9-34:74
 	android:theme
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:33:13-72
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:34:13-72
 	android:name
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:32:13-80
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:33:13-80
 meta-data#com.google.android.gms.version
-ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:35:9-37:69
+ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:36:9-38:69
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
 	android:name
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:36:13-58
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:37:13-58
 	android:value
-		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:37:13-66
+		ADDED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml:38:13-66
 uses-sdk
 INJECTED from /home/jae/AndroidStudioProjects/Automator/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/jae/AndroidStudioProjects/Automator/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43

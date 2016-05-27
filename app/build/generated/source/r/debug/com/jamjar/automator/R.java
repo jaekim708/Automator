@@ -1782,7 +1782,7 @@ containing a value of this type.
         public static final int onOff=0x7f0c0058;
         public static final int output=0x7f0c005c;
         public static final int parentPanel=0x7f0c0035;
-        public static final int playlist_spinner=0x7f0c005b;
+        public static final int playlistSpinner=0x7f0c005b;
         public static final int progress_circular=0x7f0c0005;
         public static final int progress_horizontal=0x7f0c0006;
         public static final int radio=0x7f0c0043;

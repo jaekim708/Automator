@@ -32,7 +32,7 @@
         android:layout_centerHorizontal="true" />
 
     <Spinner
-        android:id="@+id/playlist_spinner"
+        android:id="@+id/playlistSpinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/togglePlayer"

@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
         ConnectionStateCallback {
 
     private static Boolean mOn = false;
+    private static Boolean loggedIn = false;
     private static TextView mOnOff;
 
     private static final String CLIENT_ID = "d301ecd6a9054daabab3b7d846540edc";
@@ -87,7 +88,8 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
                 } else {
                     mOn = true;
                     mOnOff.setText(R.string.on_no_events);
-                    spotifyLogin();
+                    if (!loggedIn)
+                        spotifyLogin();
                 }
             }
         });
@@ -113,18 +115,19 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
 
         // if request code was from Spotify
         if (requestCode == SPOTIFY_REQUEST_CODE) {
+            loggedIn = true;
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
 
             if (response.getType() == AuthenticationResponse.Type.TOKEN) {
                 mSpotifyAuthTok = response.getAccessToken();
-                Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
+                Config playerConfig = new Config(this, mSpotifyAuthTok, CLIENT_ID);
                 Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
                     @Override
                     public void onInitialized(Player player) {
                         mPlayer = player;
                         mPlayer.addConnectionStateCallback(MainActivity.this);
                         mPlayer.addPlayerNotificationCallback(MainActivity.this);
-                        mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
+                        SpotifyPlayer.setup();
                     }
 
                     @Override
