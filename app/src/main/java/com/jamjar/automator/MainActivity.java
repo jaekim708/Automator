@@ -26,8 +26,8 @@ import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
 
-// Need to Launch spotify, not just play, in order to be market-safe
-
+// TODO: Need to Launch spotify, not just play, in order to be market-safe
+// TODO: Can only play the playlists I made for now - need to modify playlist URL to account for playlist creator
 
 
 public class MainActivity extends AppCompatActivity implements PlayerNotificationCallback,
