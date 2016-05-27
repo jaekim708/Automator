@@ -235,6 +235,7 @@
     <string name="app_name">Automator</string>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
     <string name="auth_google_play_services_client_google_display_name">Google</string>
+    <string name="calOff">Currently Off</string>
     <string name="com_spotify_sdk_login_progress">Loading…</string>
     <string name="common_google_play_services_api_unavailable_text"><ns1:g id="app_name">%1$s</ns1:g> requires one or more Google Play services that are not currently available. Please contact the developer for assistance.</string>
     <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Enable Google Play services</string>
@@ -269,10 +270,11 @@
     Current event is: %1$s\nStarted at %2$s ending at: %3$s</string>
     <string name="nextEvent">Currently On\n
     Next event is: %1$s\nStarting at %2$s ending at: %3$s</string>
-    <string name="off">Currently Off</string>
     <string name="on_no_events">Currently On\n
     No future events</string>
     <string name="playerButton">Toggle Auto-player</string>
+    <string name="playerOff">AutoPlay is currently off</string>
+    <string name="playerOn">AutoPlay is currently on</string>
     <string name="silencerButton">Toggle Auto-silencer</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

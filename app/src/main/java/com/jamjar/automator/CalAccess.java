@@ -1,6 +1,5 @@
 package com.jamjar.automator;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -8,18 +7,16 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.CalendarContract;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
 
 public class CalAccess {
-    private static PendingIntent mutePIntent;
-    private static PendingIntent unmutePIntent;
+    private static PendingIntent mMutePIntent;
+    private static PendingIntent mUnmutePIntent;
     private static AlarmManager manager;
 
     private static final long weekInMillis = 604800000;
@@ -27,19 +24,20 @@ public class CalAccess {
     public static void setup(Context context){
         Intent muteIntent = new Intent(context, ModifyVolume.class);
         muteIntent.putExtra("muteUnmute", "mute");
-        mutePIntent = PendingIntent.getBroadcast(context, 0, muteIntent,
+        mMutePIntent = PendingIntent.getBroadcast(context, 0, muteIntent,
                 Intent.FILL_IN_DATA);
 
         Intent unmuteIntent = new Intent(context, ModifyVolume.class);
         unmuteIntent.putExtra("muteUnmute", "unmute");
-        unmutePIntent = PendingIntent.getBroadcast(context, 1, unmuteIntent,
+        mUnmutePIntent = PendingIntent.getBroadcast(context, 1, unmuteIntent,
                 Intent.FILL_IN_DATA);
 
         manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
     }
 
-    protected static void update(Context context){
+    protected static String update(Context context){
         Event currEvent = queryCurrEvent(context);
+        String display = "";
 
         if (currEvent.getName() != null){   // event going on right now
             ModifyVolume.mute(context);
@@ -48,10 +46,9 @@ public class CalAccess {
 
             String start = formatter.format(new Date(currEvent.getStart()));
             String end = formatter.format(new Date(currEvent.getEnd()));
-            MainActivity.getText().setText(context.getString(R.string.currEvent,
-                    currEvent.getName(), start, end));
+            display = context.getString(R.string.currEvent, currEvent.getName(), start, end);
 
-            manager.set(AlarmManager.RTC_WAKEUP, currEvent.getEnd(), unmutePIntent);
+            manager.set(AlarmManager.RTC_WAKEUP, currEvent.getEnd(), mUnmutePIntent);
 
         } else {
             Event nextEvent = queryNextEvent(context);
@@ -62,16 +59,16 @@ public class CalAccess {
 
                 String start = formatter.format(new Date(nextEvent.getStart()));
                 String end = formatter.format(new Date(nextEvent.getEnd()));
-                MainActivity.getText().setText(context.getString(R.string.nextEvent,
-                        nextEvent.getName(), start, end));
+                display = context.getString(R.string.nextEvent, nextEvent.getName(), start, end);
 
                 AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-                manager.set(AlarmManager.RTC_WAKEUP, nextEvent.getStart(), mutePIntent);
-                manager.set(AlarmManager.RTC_WAKEUP, nextEvent.getEnd(), unmutePIntent);
+                manager.set(AlarmManager.RTC_WAKEUP, nextEvent.getStart(), mMutePIntent);
+                manager.set(AlarmManager.RTC_WAKEUP, nextEvent.getEnd(), mUnmutePIntent);
 
             }
         }
+        return display;
     }
 
     private static Event createEvent(Cursor cursor) {
@@ -129,8 +126,8 @@ public class CalAccess {
     }
 
     public static void cancelAlarms(){
-        manager.cancel(mutePIntent);
-        manager.cancel(unmutePIntent);
+        manager.cancel(mMutePIntent);
+        manager.cancel(mUnmutePIntent);
     }
 }
 

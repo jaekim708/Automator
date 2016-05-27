@@ -1,5 +1,13 @@
 package com.jamjar.automator;
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.util.Log;
+import android.widget.Spinner;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -20,10 +28,21 @@ import java.util.Map;
  */
 public class SpotifyPlayer {
     private static String userID = "";
-    private static final String userIDURL = "https://api.spotify.com/v1/me";
-    private static String playlistsURL = "";
+    private static final String userIDURL = "https://api.spotify.com/v1/me"; // CAN I DELETE?
+    private static final String playlistsURL = "https://api.spotify.com/v1/me/playlists";
+    private static HashMap<String, String> mPlaylistIDs = new HashMap<>();
+    private static final IntentFilter receiverFilter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+    private static BroadcastReceiver mBr;
 
-    public static void setup() {
+    public static void setup(final Context context, final Activity activity) {
+        mBr = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getIntExtra("state", 2) == 1) // if plugged in
+                    startPlaylist(activity);
+            }
+        };
+
         if (userID.equals("")) {
             JsonObjectRequest jsObjRequest = new JsonObjectRequest
                     (Request.Method.GET, userIDURL, null, new Response.Listener<JSONObject>() {
@@ -32,11 +51,10 @@ public class SpotifyPlayer {
                         public void onResponse(JSONObject response) {
                             System.out.println(response.toString());
                             userID = response.optString("id");
-                            playlistsURL = "https://api.spotify.com/v1/users/" +
-                                    userID + "/playlists";
 
                             System.out.println("USERID IS " + userID + " playlistsURL is " + playlistsURL);
-                            getPlaylists();
+                            getPlaylists(context);
+
                         }
                     }, new Response.ErrorListener() {
                         @Override
@@ -55,9 +73,20 @@ public class SpotifyPlayer {
             };
             AutomatorApplication.getRequestQueue().add(jsObjRequest);
         }
+        else
+            getPlaylists(context);
     }
 
-    public static void getPlaylists(){
+    public static void startPlaylist(Activity activity){
+        Spinner mPlaylistSpinner = (Spinner) activity.findViewById(R.id.playlistSpinner);
+        String pl = mPlaylistSpinner.getSelectedItem().toString();
+        System.out.println(pl + " " + mPlaylistIDs.get(pl));
+        MainActivity.getPlayer().play("spotify:user:" + userID + ":playlist:" + mPlaylistIDs.get(pl));
+        System.out.println("STARTING TO PLAY");
+    }
+
+    public static void getPlaylists(final Context context){
+        mPlaylistIDs.clear();
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, playlistsURL, null, new Response.Listener<JSONObject>() {
 
@@ -70,11 +99,13 @@ public class SpotifyPlayer {
                             try {
                                 String plName = respArr.getJSONObject(i).optString("name");
                                 MainActivity.getPlaylistAdapter().add(plName);
+                                mPlaylistIDs.put(plName, respArr.getJSONObject(i).optString("id"));
+                                context.registerReceiver(mBr, receiverFilter);
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
-
                     }
                 }, new Response.ErrorListener() {
 
@@ -94,4 +125,7 @@ public class SpotifyPlayer {
         AutomatorApplication.getRequestQueue().add(jsObjRequest);
     }
 
+    public static BroadcastReceiver getBroadcastReceiver(){
+        return mBr;
+    }
 }

@@ -26,14 +26,19 @@ import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
 
+// Need to Launch spotify, not just play, in order to be market-safe
+
+
 
 public class MainActivity extends AppCompatActivity implements PlayerNotificationCallback,
         ConnectionStateCallback {
 
-    private static Boolean mOn = false;
-    private static Boolean loggedIn = false;
-    private static TextView mOnOff;
+    private static Boolean mCalOn = false;
+    private static TextView mCalText;
+    private static int REQUEST_PERMISSION_READ_CALENDAR = 4;
 
+    private static Boolean mSpotOn = false;
+    private static Boolean loggedIn = false;
     private static final String CLIENT_ID = "d301ecd6a9054daabab3b7d846540edc";
     private static final String REDIRECT_URI = "automator://callback/";
     private static Player mPlayer;
@@ -44,52 +49,56 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
 
     private SpotifyPlayer spotifyPlayer = new SpotifyPlayer();
 
-
-    private static int REQUEST_PERMISSION_READ_CALENDAR = 4;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button mSToggle = (Button) findViewById(R.id.toggleSilencer);
-        Button mPToggle = (Button) findViewById(R.id.togglePlayer);
+        final Button mPToggle = (Button) findViewById(R.id.togglePlayer);
 
         mPlaylistSpinner = (Spinner) findViewById(R.id.playlistSpinner);
         mPlaylistAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         mPlaylistAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mPlaylistSpinner.setAdapter(mPlaylistAdapter);
 
-        mOnOff = (TextView) findViewById(R.id.onOff);
-        mOnOff.setText(R.string.off);
+        mCalText = (TextView) findViewById(R.id.calText);
+        mCalText.setText(R.string.calOff);
         CalAccess.setup(getApplicationContext());
 
         mSToggle.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (mOn) {
-                    mOn = false;
-                    mOnOff.setText(R.string.off);
+                if (mCalOn) {
+                    mCalOn = false;
+                    mCalText.setText(R.string.calOff);
                     CalAccess.cancelAlarms();
                 } else {
-                    mOn = true;
-                    mOnOff.setText(R.string.on_no_events);
+                    mCalOn = true;
+                    mCalText.setText(R.string.on_no_events);
                     getCalendarPermissions();
-                    CalAccess.update(getApplicationContext());
+                    mCalText.setText(CalAccess.update(getApplicationContext()));
                 }
             }
         });
 
         mPToggle.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (mOn) {
-                    mOn = false;
-                    mOnOff.setText(R.string.off);
-                    CalAccess.cancelAlarms();
+                if (mSpotOn) {
+                    mSpotOn = false;
+                    mPToggle.setText(R.string.playerOff);
+                    try {
+                        unregisterReceiver(SpotifyPlayer.getBroadcastReceiver());
+                        // clear spinner?
+                    } catch (IllegalArgumentException e) {
+                        // Receiver wasn't registered, so do nothing
+                    }
                 } else {
-                    mOn = true;
-                    mOnOff.setText(R.string.on_no_events);
+                    mSpotOn = true;
+                    mPToggle.setText(R.string.playerOn);
                     if (!loggedIn)
                         spotifyLogin();
+                    else
+                        SpotifyPlayer.getPlaylists(getApplicationContext());
+
                 }
             }
         });
@@ -103,10 +112,6 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
                     new String[]{Manifest.permission.READ_CALENDAR},
                     REQUEST_PERMISSION_READ_CALENDAR);
         }
-    }
-
-    public static TextView getText(){
-        return mOnOff;
     }
 
     @Override
@@ -127,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
                         mPlayer = player;
                         mPlayer.addConnectionStateCallback(MainActivity.this);
                         mPlayer.addPlayerNotificationCallback(MainActivity.this);
-                        SpotifyPlayer.setup();
+                        SpotifyPlayer.setup(getApplicationContext(), MainActivity.this);
                     }
 
                     @Override
@@ -200,7 +205,12 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
     public static Spinner getPlaylistSpinner(){
         return mPlaylistSpinner;
     }
+
     public static ArrayAdapter<CharSequence> getPlaylistAdapter(){
         return mPlaylistAdapter;
+    }
+
+    public static Player getPlayer(){
+        return mPlayer;
     }
 }

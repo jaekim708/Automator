@@ -1743,6 +1743,7 @@ containing a value of this type.
         public static final int auto=0x7f0c0025;
         public static final int beginning=0x7f0c0018;
         public static final int buttonPanel=0x7f0c0033;
+        public static final int calText=0x7f0c0058;
         public static final int cancel_action=0x7f0c0060;
         public static final int checkbox=0x7f0c0041;
         public static final int chronometer=0x7f0c0066;
@@ -1779,10 +1780,9 @@ containing a value of this type.
         public static final int never=0x7f0c0020;
         public static final int none=0x7f0c000e;
         public static final int normal=0x7f0c000a;
-        public static final int onOff=0x7f0c0058;
         public static final int output=0x7f0c005c;
         public static final int parentPanel=0x7f0c0035;
-        public static final int playlistSpinner=0x7f0c005b;
+        public static final int playlistSpinner=0x7f0c005a;
         public static final int progress_circular=0x7f0c0005;
         public static final int progress_horizontal=0x7f0c0006;
         public static final int radio=0x7f0c0043;
@@ -1820,7 +1820,7 @@ containing a value of this type.
         public static final int time=0x7f0c0065;
         public static final int title=0x7f0c0032;
         public static final int title_template=0x7f0c0037;
-        public static final int togglePlayer=0x7f0c005a;
+        public static final int togglePlayer=0x7f0c005b;
         public static final int toggleSilencer=0x7f0c0059;
         public static final int topPanel=0x7f0c0036;
         public static final int up=0x7f0c0008;
@@ -1905,7 +1905,8 @@ containing a value of this type.
         public static final int app_name=0x7f060031;
         public static final int auth_google_play_services_client_facebook_display_name=0x7f060032;
         public static final int auth_google_play_services_client_google_display_name=0x7f060033;
-        public static final int com_spotify_sdk_login_progress=0x7f060034;
+        public static final int calOff=0x7f060034;
+        public static final int com_spotify_sdk_login_progress=0x7f060035;
         public static final int common_google_play_services_api_unavailable_text=0x7f060013;
         public static final int common_google_play_services_enable_button=0x7f060014;
         public static final int common_google_play_services_enable_text=0x7f060015;
@@ -1935,12 +1936,13 @@ containing a value of this type.
         public static final int common_open_on_phone=0x7f06002d;
         public static final int common_signin_button_text=0x7f06002e;
         public static final int common_signin_button_text_long=0x7f06002f;
-        public static final int currEvent=0x7f060035;
-        public static final int nextEvent=0x7f060036;
-        public static final int off=0x7f060037;
+        public static final int currEvent=0x7f060036;
+        public static final int nextEvent=0x7f060037;
         public static final int on_no_events=0x7f060038;
         public static final int playerButton=0x7f060039;
-        public static final int silencerButton=0x7f06003a;
+        public static final int playerOff=0x7f06003a;
+        public static final int playerOn=0x7f06003b;
+        public static final int silencerButton=0x7f06003c;
         public static final int status_bar_notification_info_overflow=0x7f060030;
     }
     public static final class style {

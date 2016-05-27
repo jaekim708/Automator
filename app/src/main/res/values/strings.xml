@@ -4,7 +4,7 @@
     <string name="playerButton">Toggle Auto-player</string>
     <string name="on_no_events">Currently On\n
     No future events</string>
-    <string name="off">Currently Off</string>
+    <string name="calOff">Currently Off</string>
 
     <string name="currEvent">Currently On\n
     Current event is: %1$s\nStarted at %2$s ending at: %3$s</string>
@@ -12,5 +12,7 @@
     <string name="nextEvent">Currently On\n
     Next event is: %1$s\nStarting at %2$s ending at: %3$s</string>
 
+    <string name="playerOn">AutoPlay is currently on</string>
+    <string name="playerOff">AutoPlay is currently off</string>
 
 </resources>
