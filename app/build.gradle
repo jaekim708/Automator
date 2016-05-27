@@ -34,6 +34,8 @@ android {
 
 
 repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
     flatDir {
         dirs 'libs'
     }
@@ -52,8 +54,18 @@ dependencies {
     compile('com.google.apis:google-api-services-calendar:v3-rev125-1.20.0') {
         exclude group: 'org.apache.httpcomponents'
     }
+    //compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    //compile 'com.squareup.okio:okio:1.8.0'
+    //compile 'com.squareup.okhttp3:okhttp:3.0.0'
+    //compile 'com.squareup.okhttp3:okhttp-urlconnection:3.0.0'
+
+    // This library handles making HTTP requests to Spotify
+    //compile 'com.github.kaaes:spotify-web-api-android:0.4.1@aar'
+
     // This library handles authentication and authorization
     compile 'com.spotify.sdk:spotify-auth:1.0.0-beta12@aar'
     // This library handles music playback
     compile 'com.spotify.sdk:spotify-player:1.0.0-beta12@aar'
+
+    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
 }

@@ -16,13 +16,27 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
     <Button
-        android:id="@+id/toggle"
+        android:id="@+id/toggleSilencer"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/button"
-        android:onClick="toggle"
+        android:text="@string/silencerButton"
         android:layout_below="@+id/onOff"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/togglePlayer"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/playerButton"
+        android:layout_below="@+id/toggleSilencer"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/playlist_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/togglePlayer"
+        android:layout_centerHorizontal="true"  />
 
     <TextView
         android:id="@+id/output"

@@ -20,7 +20,6 @@ import java.util.TimeZone;
 public class CalAccess {
     private static PendingIntent mutePIntent;
     private static PendingIntent unmutePIntent;
-
     private static AlarmManager manager;
 
     private static final long weekInMillis = 604800000;

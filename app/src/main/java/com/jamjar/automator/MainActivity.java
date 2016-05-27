@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -23,37 +25,34 @@ import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
 
 
-public class MainActivity extends AppCompatActivity implements
-        PlayerNotificationCallback, ConnectionStateCallback {
-    private Boolean mOn = false;
+public class MainActivity extends AppCompatActivity implements PlayerNotificationCallback,
+        ConnectionStateCallback {
+
+    private static Boolean mOn = false;
     private static TextView mOnOff;
-    static final int REQUEST_PERMISSION_READ_CALENDAR = 4;
+    private static int REQUEST_PERMISSION_READ_CALENDAR = 4;
     private static final String CLIENT_ID = "d301ecd6a9054daabab3b7d846540edc";
     private static final String REDIRECT_URI = "automator://callback/";
-    private Player mPlayer;
-    private static final int REQUEST_CODE = 1337;
+    private static Player mPlayer;
+    private static final int SPOTIFY_REQUEST_CODE = 1337;
+
+    private static String mSpotifyAuthTok;
+
+    private SpotifyPlayer spotifyPlayer = new SpotifyPlayer();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button mToggle = (Button) findViewById(R.id.toggle);
+        Button mSToggle = (Button) findViewById(R.id.toggleSilencer);
+        Button mPToggle = (Button) findViewById(R.id.togglePlayer);
 
         mOnOff = (TextView) findViewById(R.id.onOff);
         mOnOff.setText(R.string.off);
         CalAccess.setup(getApplicationContext());
 
-        // Begin Spotify login code
-        AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
-                AuthenticationResponse.Type.TOKEN,
-                REDIRECT_URI);
-        builder.setScopes(new String[]{"user-read-private", "streaming", "playlist-read-private", "playlist-read-collaborative"});
-        AuthenticationRequest request = builder.build();
-
-        AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
-        // End Spotify login code
-
-        mToggle.setOnClickListener(new View.OnClickListener() {
+        mSToggle.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (mOn) {
                     mOn = false;
@@ -64,6 +63,20 @@ public class MainActivity extends AppCompatActivity implements
                     mOnOff.setText(R.string.on_no_events);
                     getCalendarPermissions();
                     CalAccess.update(getApplicationContext());
+                }
+            }
+        });
+
+        mPToggle.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (mOn) {
+                    mOn = false;
+                    mOnOff.setText(R.string.off);
+                    CalAccess.cancelAlarms();
+                } else {
+                    mOn = true;
+                    mOnOff.setText(R.string.on_no_events);
+                    spotifyLogin();
                 }
             }
         });
@@ -88,9 +101,11 @@ public class MainActivity extends AppCompatActivity implements
         super.onActivityResult(requestCode, resultCode, intent);
 
         // if request code was from Spotify
-        if (requestCode == REQUEST_CODE) {
+        if (requestCode == SPOTIFY_REQUEST_CODE) {
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
+
             if (response.getType() == AuthenticationResponse.Type.TOKEN) {
+                mSpotifyAuthTok = response.getAccessToken();
                 Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
                 Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
                     @Override
@@ -147,8 +162,25 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-     protected void onDestroy() {
+    protected void onDestroy() {
         Spotify.destroyPlayer(this);
         super.onDestroy();
     }
+
+    private void spotifyLogin(){
+        // Begin Spotify login code - calls onActivityResult()
+        AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
+                AuthenticationResponse.Type.TOKEN,
+                REDIRECT_URI);
+        builder.setScopes(new String[]{"user-read-private", "streaming", "playlist-read-private", "playlist-read-collaborative"});
+        AuthenticationRequest request = builder.build();
+        AuthenticationClient.openLoginActivity(this, SPOTIFY_REQUEST_CODE, request);
+        // End Spotify login code
+
+    }
+
+    public static String getSpotifyAuthTok(){
+        return mSpotifyAuthTok;
+    }
+
 }
