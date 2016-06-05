@@ -89,7 +89,7 @@ public class SpotifyPlayer {
 
         Uri plURI = Uri.parse("spotify:user:" + userID + ":playlist:" + mPlaylistIDs.get(pl));
         Intent intent = new Intent("com.spotify.music", plURI);
-        //intent.setAction(android.content.Intent.ACTION_VIEW);
+        intent.setAction(android.content.Intent.ACTION_VIEW);
         //File file = new File("spotify:user:" + userID + ":playlist:" + mPlaylistIDs.get(pl));
         //intent.setDataAndType(Uri.fromFile(file), "audio/*");
         activity.startActivity(intent);
