@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.Spinner;
 
@@ -14,11 +15,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +42,7 @@ public class SpotifyPlayer {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent.getIntExtra("state", 2) == 1) // if plugged in
-                    startPlaylist(activity);
+                    startPlaylist(activity, context);
             }
         };
 
@@ -77,16 +80,26 @@ public class SpotifyPlayer {
             getPlaylists(context);
     }
 
-    public static void startPlaylist(Activity activity){
+    public static void startPlaylist(Activity activity, Context context){
         Spinner mPlaylistSpinner = (Spinner) activity.findViewById(R.id.playlistSpinner);
         String pl = mPlaylistSpinner.getSelectedItem().toString();
         System.out.println(pl + " " + mPlaylistIDs.get(pl));
-        MainActivity.getPlayer().play("spotify:user:" + userID + ":playlist:" + mPlaylistIDs.get(pl));
-        System.out.println("STARTING TO PLAY");
+        //MainActivity.getPlayer().play("spotify:user:" + userID + ":playlist:" + mPlaylistIDs.get(pl));
+
+
+        Uri plURI = Uri.parse("spotify:user:" + userID + ":playlist:" + mPlaylistIDs.get(pl));
+        Intent intent = new Intent("com.spotify.music", plURI);
+        //intent.setAction(android.content.Intent.ACTION_VIEW);
+        //File file = new File("spotify:user:" + userID + ":playlist:" + mPlaylistIDs.get(pl));
+        //intent.setDataAndType(Uri.fromFile(file), "audio/*");
+        activity.startActivity(intent);
+        System.out.println("STARTING TO PLAY ");
     }
 
     public static void getPlaylists(final Context context){
         mPlaylistIDs.clear();
+        MainActivity.getPlaylistAdapter().clear();
+        MainActivity.getPlaylistAdapter().notifyDataSetChanged();
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, playlistsURL, null, new Response.Listener<JSONObject>() {
 
